@@ -26,7 +26,9 @@ const ClientPortal = () => {
     return (
         <Layout>
             <div className="page">
-                <ExistingTicket tickets={tickets}/>
+                {tickets && (
+                    <ExistingTicket tickets={tickets}/>
+                )}
                 <NewTicketInput newTicketCallback={newTicketCallback}/>
             </div>
         </Layout>
