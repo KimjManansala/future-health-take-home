@@ -46,7 +46,7 @@ const Header: React.FC = () => {
         nav {
           display: flex;
           padding: 2rem;
-          align-items: center;
+          
         }
       `}</style>
     </nav>

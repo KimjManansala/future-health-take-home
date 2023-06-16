@@ -38,6 +38,36 @@ const Layout: React.FC<Props> = (props) => (
       button {
         cursor: pointer;
       }
+      .form_input {
+          display: block;
+          justify-content: space-between;
+        }
+        .page {
+          max-width: 100vw;
+          margin: auto;
+          padding: 5px
+        }
+        .form_input > label {
+          display: block;
+        }
+        .form_input > input, textarea {
+          display: block;
+          width: 100%;
+          padding-top: 2px;
+        }
+        .post {
+          background: white;
+          transition: box-shadow 0.1s ease-in;
+        }
+
+        .post:hover {
+          box-shadow: 1px 1px 3px #aaa;
+        }
+
+        .post + .post {
+          margin-top: 2rem;
+        }
+        
     `}</style>
     <style jsx>{`
       .layout {

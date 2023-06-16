@@ -1,0 +1,34 @@
+import ExistingTicket from "./ExistingTicket";
+import React, {useEffect, useState} from "react";
+import Layout from "../../components/Layout";
+import NewTicketInput from "./NewTicketInput";
+
+const ClientPortal = () => {
+    const [tickets, setTickets] = useState<any[]>([])
+
+    const handleGetTickets = async () => {
+        const res = await fetch('/api/ticket', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await res.json()
+        setTickets(data.props.result)
+        console.log("data", data)
+    }
+
+    useEffect(() => {
+        handleGetTickets()
+    }, [])
+    return (
+        <Layout>
+            <div className="page">
+                <ExistingTicket tickets={tickets}/>
+                <NewTicketInput />
+            </div>
+        </Layout>
+    );
+};
+
+export default ClientPortal;
