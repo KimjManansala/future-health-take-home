@@ -8,7 +8,7 @@ interface IExistingTicket {
 const ExistingTicket: React.FC<IExistingTicket> = ({tickets}) => {
     return (
         <div className="section">
-            <h1>Existing Tickets</h1>
+            <h1>My Tickets</h1>
             <main>
                 {tickets.map((ticket) => <>
                     <Ticket ticket={ticket}/>
