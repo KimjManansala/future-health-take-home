@@ -46,7 +46,8 @@ model User {
   id         String       @id @default(cuid())
   firstname  String
   lastname   String
-  email      String?      @unique
+  email      String       @unique
+  password   String
   createdAt  DateTime     @default(now()) @map(name: "created_at")
   updatedAt  DateTime     @updatedAt @map(name: "updated_at")
   UserType   UserType?    @relation(fields: [UserTypeId], references: [id])
