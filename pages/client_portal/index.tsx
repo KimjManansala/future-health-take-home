@@ -15,7 +15,9 @@ const ClientPortal = () => {
         });
         const data = await res.json()
         setTickets(data.props.result)
-        console.log("data", data)
+    }
+    const newTicketCallback = () => {
+        handleGetTickets();
     }
 
     useEffect(() => {
@@ -25,7 +27,7 @@ const ClientPortal = () => {
         <Layout>
             <div className="page">
                 <ExistingTicket tickets={tickets}/>
-                <NewTicketInput />
+                <NewTicketInput newTicketCallback={newTicketCallback}/>
             </div>
         </Layout>
     );

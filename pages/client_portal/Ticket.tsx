@@ -10,27 +10,31 @@ const Ticket = ({ticket}) => {
                         <p>Click for more info</p>
                     </div>
                     <div className="flip-card-back">
-                        <p className="title">Email: {ticket.name}</p>
-                        <p className="title">Description: {ticket.description}</p>
-                        {console.log('ticket', ticket)}
-                        <p className="title">Status: {ticket.status.status}</p>
+                        <p className="detail">Email: {ticket.name}</p>
+                        <p className="detail">Description: {ticket.description}</p>
+                        <p className="detail">Status: {ticket.status.status}</p>
                     </div>
                 </div>
             </div>
             <style jsx>{`
               .flip-card {
+              padding: 5px;
               background-color: transparent;
               width: 190px;
-              height: 254px;
+              height: 127px;
               perspective: 1000px;
               font-family: sans-serif;
             }
             
             .title {
               font-size: 1.5em;
-              font-weight: 900;
+              // font-weight: 900;
               text-align: center;
               margin: 0;
+            }
+            .detail {
+                font-size: small;
+                text-align: left;
             }
             
             .flip-card-inner {
@@ -71,6 +75,7 @@ const Ticket = ({ticket}) => {
                  rgba(50, 50, 50, .5) 40%, rgba(148, 148, 148, 1) 48%);
               color: black;
               transform: rotateY(180deg);
+              padding: 5px
             }
             `}</style>
         </div>

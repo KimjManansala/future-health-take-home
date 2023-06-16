@@ -36,7 +36,7 @@ const handlePost = async (req, res) => {
             }
         }
     })
-    res.status(200).json({ name: 'John Doe' })
+    res.status(200).json({ result })
 }
 
 const handleGet = async (req, res) => {

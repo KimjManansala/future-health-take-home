@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewTicketInput = () => {
+const NewTicketInput = ({newTicketCallback}) => {
 
     const handleSubmitForm = async (event) => {
         event.preventDefault()
@@ -20,6 +20,7 @@ const NewTicketInput = () => {
                 description: description.value
             }),
         })
+        newTicketCallback();
     }
 
 
