@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <div className="left">
       <Link href="/">
         <a className="bold" data-active={isActive("/")}>
-          Feed
+          FutureHealth
         </a>
       </Link>
       <style jsx>{`
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
         nav {
           display: flex;
           padding: 2rem;
-          align-items: center;
+          
         }
       `}</style>
     </nav>
