@@ -1,7 +1,7 @@
-import ExistingTicket from "./ExistingTicket";
+import ExistingTicket from "../../components/client_portal/ExistingTicket";
 import React, {useEffect, useState} from "react";
 import Layout from "../../components/Layout";
-import NewTicketInput from "./NewTicketInput";
+import NewTicketInput from "../../components/client_portal/NewTicketInput";
 
 const ClientPortal = () => {
     const [tickets, setTickets] = useState<any[]>([])
