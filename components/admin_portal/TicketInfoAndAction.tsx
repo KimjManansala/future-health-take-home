@@ -1,7 +1,7 @@
 import React from 'react';
 import UpdateTicket from "./UpdateTicket";
 
-const TicketInfoAndAction = ({ticket}) => {
+const TicketInfoAndAction = ({ticket, updateCallback}) => {
     return (
         <div className="text-left">
             <ul>
@@ -11,10 +11,13 @@ const TicketInfoAndAction = ({ticket}) => {
                 <p className="detail"><span className="list-key">Reported User:</span> {ticket.createdBy.firstname} {ticket.createdBy.lastname}</p>
                 <p className="detail"><span className="list-key">Reported User Email:</span> {ticket.createdBy.email}</p>
             </ul>
-            <UpdateTicket ticket={ticket}/>
+            <UpdateTicket ticket={ticket} updateCallback={updateCallback} />
             <style jsx>{`
                 .list-key {
                     font-weight: bold;
+                }
+                .detail {
+                    padding: 5px;
                 }
             `}</style>
         </div>

@@ -24,15 +24,17 @@ const AdminPortal = () => {
         setTickets(data.props.result)
     }
 
+    const refetchTickets = () => {
+        handleGetTickets()
+    }
+
     useEffect(() => {
         handleGetTickets()
     }, [])
 
     return (
         <Layout>
-            <div>
-            <AllTickets tickets={tickets} selectedTicketId={selectedTicketID}/>
-            </div>
+            <AllTickets tickets={tickets} selectedTicketId={selectedTicketID} updateCallback={refetchTickets}/>
         </Layout>
     );
 };

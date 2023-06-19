@@ -1,7 +1,9 @@
 import React from 'react';
 import Select from "react-select";
+import {useRouter} from "next/router";
 
-const UpdateTicket = ({ticket}) => {
+const UpdateTicket = ({ticket, updateCallback}) => {
+
     const statusOptions = [
         { value: 'clixtltqo0000gne7bw46f6ec', label: 'New', isDisabled: true },
         { value: 'clixtltqo0002gne7632ordsd', label: 'in Progress' },
@@ -29,6 +31,10 @@ const UpdateTicket = ({ticket}) => {
                 response: response.value
             }),
         })
+        if (res.status === 200) {
+            alert('Successfully updated ticket!')
+            updateCallback()
+        }
     }
 
     return (

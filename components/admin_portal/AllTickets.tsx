@@ -4,18 +4,28 @@ import AdminTicket from "./AdminTicket";
 
 interface IAllTickets {
     tickets: any[],
-    selectedTicketId?: string
+    selectedTicketId?: string,
+    updateCallback: () => void;
 }
 
-const AllTickets: React.FC<IAllTickets> = ({ tickets, selectedTicketId }) => {
+const AllTickets: React.FC<IAllTickets> = ({ tickets, selectedTicketId, updateCallback }) => {
     return (
         <div className="section">
-            <h1>My Tickets</h1>
+            <h1>All Tickets</h1>
             <main>
-                {tickets.map((ticket) => <>
-                    <AdminTicket ticket={ticket} selectedTicketId={selectedTicketId}/>
-                </>)}
+                <div className="card-parent">
+                    {tickets.map((ticket) => <>
+                        <AdminTicket ticket={ticket} selectedTicketId={selectedTicketId} updateCallback={updateCallback} />
+                    </>)}
+                </div>
             </main>
+            <style jsx>{`
+                .card-parent {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: stretch;
+                }
+            `}</style>
         </div>
     );
 };
