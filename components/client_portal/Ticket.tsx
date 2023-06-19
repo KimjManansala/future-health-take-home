@@ -65,14 +65,10 @@ const Ticket = ({ticket}) => {
             }
             
             .flip-card-front {
-              background: linear-gradient(120deg, rgb(80, 50, 50, .2) 60%, rgb(50, 50, 50, .2) 88%,
-                 rgba(50, 50, 50, .5) 40%, rgba(148, 148, 148, 1) 48%);
               color: black;
             }
             
             .flip-card-back {
-              background: linear-gradient(120deg, rgb(80, 50, 50, .2) 60%, rgb(50, 50, 50, .2) 88%,
-                 rgba(50, 50, 50, .5) 40%, rgba(148, 148, 148, 1) 48%);
               color: black;
               transform: rotateY(180deg);
               padding: 5px

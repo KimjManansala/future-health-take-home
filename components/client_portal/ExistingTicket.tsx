@@ -14,6 +14,13 @@ const ExistingTicket: React.FC<IExistingTicket> = ({tickets}) => {
                     <Ticket ticket={ticket}/>
                 </>)}
             </main>
+            <style jsx>{`
+                main {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: stretch;
+                }
+            `}</style>
         </div>
     );
 };

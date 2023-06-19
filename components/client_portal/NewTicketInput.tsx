@@ -25,7 +25,7 @@ const NewTicketInput = ({newTicketCallback}) => {
 
 
     return (
-        <div className="section">
+        <div className="section" style={{maxWidth: '750px'}}>
             <h1>Create a new ticket</h1>
             <form style={{
                 display: "grid",
