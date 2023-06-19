@@ -67,6 +67,12 @@ const Layout: React.FC<Props> = (props) => (
         .post + .post {
           margin-top: 2rem;
         }
+        .text-center {
+            text-align: center;
+        }
+        .text-left{
+            text-align: left;
+        }
         
     `}</style>
     <style jsx>{`
