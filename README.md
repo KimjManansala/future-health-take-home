@@ -9,7 +9,8 @@ This is a take home assignment for FutureHealth to showcase my ability to launch
 
 * **Kim Jasper Manansala** - [github](https://github.com/KimjManansala)
 
-
+## Video Walkthrough
+https://www.youtube.com/watch?v=lyJqd5ewiJo
 
 Live Demo
 ---
