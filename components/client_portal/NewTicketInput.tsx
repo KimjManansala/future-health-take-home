@@ -20,6 +20,7 @@ const NewTicketInput = ({newTicketCallback}) => {
                 description: description.value
             }),
         })
+        event.target.reset()
         newTicketCallback();
     }
 
@@ -34,15 +35,15 @@ const NewTicketInput = ({newTicketCallback}) => {
             }} onSubmit={handleSubmitForm}>
                 <div className="form_input">
                     <label>Name</label>
-                    <input name="name" />
+                    <input name="name" required />
                 </div>
                 <div className="form_input">
                     <label>Email</label>
-                    <input name="email"/>
+                    <input name="email" type="email" required/>
                 </div>
                 <div className="form_input">
                     <label>Description</label>
-                    <textarea name="description"/>
+                    <textarea name="description" required/>
                 </div>
                 <button style={{width: 'fit-content'}}>Submit!</button>
             </form>
