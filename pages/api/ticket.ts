@@ -1,6 +1,7 @@
 import prisma from "../../lib/prisma";
+import {mockClientUserId} from "../../common";
 
-const mockUserId = "clixto5zj000agne71jwpqd13"
+
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -27,34 +28,43 @@ const handlePost = async (req, res) => {
             email: email,
             description: description,
             statusId: 'clixtltqo0000gne7bw46f6ec', // Hard coded for now
-            UserTicket: {
-                create: [
-                    {
-                        userId: mockUserId // Hard coded for now
-                    }
-                ]
-            }
+            createdById: mockClientUserId,
+            // UserTicket: {
+            //     create: [
+            //         {
+            //             userId: mockClientUserId // Hard coded for now
+            //         }
+            //     ]
+            // }
         }
     })
     res.status(200).json({ result })
 }
 
 const handleGet = async (req, res) => {
+    const { userId } = req.query
+
     const result = await prisma.ticket.findMany({
         where: {
-            UserTicket: {
-                some: {
-                    userId: mockUserId
-                }
-            }
-        },
+            ...(userId? {
+                createdById: userId
+            } : {})
+        }
+            ,
         include: {
             status: {
                 select: { status: true}
+            },
+            createdBy: {
+                select: {
+                    firstname: true,
+                    lastname: true,
+                    email: true
+                }
             }
+
         }
     })
-    console.log("result", result)
     res.status(200).json({
         props: { result },
         revalidate: 10,

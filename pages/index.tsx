@@ -1,27 +1,18 @@
 import React from "react"
-import { GetStaticProps } from "next"
+
 import Layout from "../components/Layout"
-import Post, { PostProps } from "../components/Post"
-import prisma from "../lib/prisma";
+import Link from "next/link";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const user = await prisma.userType.findMany();
-  console.log('user', user);
-  return {
-    props: { user },
-    revalidate: 10,
-  };
-};
-
-type Props = {
-  user: PostProps[]
-}
-
-const Blog: React.FC<Props> = (props) => {
+const Blog: React.FC<{}> = () => {
   return (
     <Layout>
       <div className="page">
-          TODO Create login screen here
+          <div>
+              <Link href={'/client_portal'}>Go to client portal</Link>
+          </div>
+          <div>
+              <Link href={'/admin_portal'}>Go to admin portal</Link>
+          </div>
       </div>
       <style jsx>{`
  

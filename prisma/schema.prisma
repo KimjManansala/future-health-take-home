@@ -1,5 +1,3 @@
-// schema.prisma
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["jsonProtocol"]
@@ -7,21 +5,22 @@ generator client {
 
 datasource db {
   provider          = "postgresql"
-  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Ticket {
   id          String        @id @default(cuid())
-  name        String
-  email       String
-  description String
-  status      TicketStatus? @relation(fields: [statusId], references: [id])
   statusId    String?
-  createdAt   DateTime      @default(now()) @map(name: "created_at")
-  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
-  UserTicket  UserTicket[]
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  description String
+  email       String
+  name        String
+  createdById String?
+  createdBy   User?         @relation(fields: [createdById], references: [id])
+  status      TicketStatus? @relation(fields: [statusId], references: [id])
 }
 
 model TicketStatus {
@@ -36,25 +35,17 @@ model UserType {
   User User[]
 }
 
-model UserTicket {
-  id       String  @id @default(cuid())
-  userId   String?
-  user     User?   @relation(fields: [userId], references: [id])
-  ticketId String?
-  ticket   Ticket? @relation(fields: [ticketId], references: [id])
-}
-
 model User {
-  id         String       @id @default(cuid())
+  id         String    @id @default(cuid())
   firstname  String
   lastname   String
-  email      String       @unique
-  password   String
-  createdAt  DateTime     @default(now()) @map(name: "created_at")
-  updatedAt  DateTime     @updatedAt @map(name: "updated_at")
-  UserType   UserType?    @relation(fields: [UserTypeId], references: [id])
+  email      String    @unique
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
   UserTypeId String?
-  UserTicket UserTicket[]
+  password   String
+  Ticket     Ticket[]
+  UserType   UserType? @relation(fields: [UserTypeId], references: [id])
 
-  @@map(name: "users")
+  @@map("users")
 }
