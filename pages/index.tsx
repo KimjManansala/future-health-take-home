@@ -15,7 +15,9 @@ const Blog: React.FC<{}> = () => {
           </div>
       </div>
       <style jsx>{`
- 
+           .page > div {
+            padding: 5px;
+           }
       `}</style>
     </Layout>
   )

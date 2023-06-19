@@ -1,16 +1,17 @@
 import React from 'react';
 
-const Ticket = ({ticket}) => {
+const Ticket = ({ticket, ticketNumber}) => {
     return (
         <div>
             <div className="flip-card">
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
-                        <p className="title">{ticket.name}</p>
+                        <h3>Ticket #{ticketNumber}</h3>
                         <p>Click for more info</p>
                     </div>
                     <div className="flip-card-back">
-                        <p className="detail">Email: {ticket.name}</p>
+                        <p className="title">{ticket.name}</p>
+                        <p className="detail">Email: {ticket.email}</p>
                         <p className="detail">Description: {ticket.description}</p>
                         <p className="detail">Status: {ticket.status.status}</p>
                     </div>
@@ -28,7 +29,7 @@ const Ticket = ({ticket}) => {
             
             .title {
               font-size: 1.5em;
-              // font-weight: 900;
+
               text-align: center;
               margin: 0;
             }

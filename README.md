@@ -51,6 +51,7 @@ Wish to include
   * Allow users to log in as a client or admin
 * Add a global state management library like redux to reduce prop drilling
 * Track admins response to ticket and which admin worked on which ticket
+* Global loading screen
 
 
 
