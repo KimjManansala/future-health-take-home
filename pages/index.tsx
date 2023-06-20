@@ -13,7 +13,7 @@ const Blog: React.FC<{}> = () => {
               <div className="row">
                   <div className="col" role="button">
                       <Link href={'/client_portal'}>
-                      <div className="card">
+                      <div className="card" id='client-portal-link'>
                           <div className="card-body">
                               Go to client portal
                           </div>
@@ -22,7 +22,7 @@ const Blog: React.FC<{}> = () => {
                   </div>
                   <div className="col" role="button">
                       <Link href={'/admin_portal'}>
-                      <div className="card">
+                      <div className="card" id='admin-portal-link'>
                           <div className="card-body">
                               Go to admin portal
                           </div>

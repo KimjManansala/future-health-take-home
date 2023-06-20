@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   let left = (
     <div className="left">
       <Link href="/">
-        <a className="bold" data-active={isActive("/")}>
+        <a className="bold" data-active={isActive("/")} id="future-health-home-page-link">
           FutureHealth
         </a>
       </Link>
