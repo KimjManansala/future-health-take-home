@@ -9,18 +9,25 @@ const NewTicketInput = ({newTicketCallback}) => {
             email,
             description
         } = event.target
-        const res = await fetch('/api/ticket', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name.value,
-                email: email.value,
-                description: description.value
-            }),
-        })
-        newTicketCallback();
+        try {
+            const res = await fetch('/api/ticket', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name.value,
+                    email: email.value,
+                    description: description.value
+                }),
+            })
+            if (res.status === 201) {
+                newTicketCallback();
+            }
+        } catch (error) {
+            console.error(error)
+            alert("Something went wrong. Please try again later")
+        }
     }
 
 
