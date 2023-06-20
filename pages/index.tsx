@@ -8,6 +8,8 @@ const Blog: React.FC<{}> = () => {
     <Layout>
       <div className="page">
           <div className="container text-center">
+              <h1>Welcome!</h1>
+              <h3>Here is a simulation of a mock help desk</h3>
               <div className="row">
                   <div className="col" role="button">
                       <Link href={'/client_portal'}>

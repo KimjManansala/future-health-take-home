@@ -3,52 +3,31 @@ import {bold} from "kleur/colors";
 
 const Ticket = ({ticket, ticketNumber}) => {
     const [isExpand, setIsExpand] = useState<boolean>(false);
+    const collapseBodyId = `collapse-body-${ticket.id}`
     return (
-        <div>
-            <div>
-                <div className="card">
-                    <div>
-                        <h3>Ticket #{ticketNumber}</h3>
-                        {!isExpand && (
-                        <button onClick={() => {setIsExpand(!isExpand)}}>Click for more info</button>
+        <>
+                <div className="card ">
+                    <div className="card-body">
+                        <h5 className="card-title">Ticket #{ticketNumber}</h5>
+                        {isExpand && (
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item"><span className="fw-bold">Name:</span> {ticket.name}</li>
+                                <li className="list-group-item"><span className="fw-bold">Email:</span> {ticket.email}</li>
+                                <li className="list-group-item"><span className="fw-bold">Description:</span> {ticket.description}</li>
+                                <li className="list-group-item"><span className="fw-bold">Status:</span> {ticket.status.status}</li>
+                            </ul>
                         )}
+                        <button className="btn btn-primary" onClick={() => {setIsExpand(!isExpand)}}>{!isExpand? 'Expand' : 'Minimize'}</button>
                     </div>
-                    {isExpand && (
-                        <div>
-                            <p className="detail">Name: {ticket.name}</p>
-                            <p className="detail">Email: {ticket.email}</p>
-                            <p className="detail">Description: {ticket.description}</p>
-                            <p className="detail">Status: {ticket.status.status}</p>
-                            <button onClick={() => {setIsExpand(!isExpand)}}>Minimize</button>
-                        </div>
-                    )}
                 </div>
-            </div>
             <style jsx>{`
-
-            .title {
-              font-size: 1.5em;
-
-              text-align: center;
-              margin: 0;
-            }
-            .detail {
-                font-size: small;
-                text-align: left;
-            }
             .card {
-                flex: 0 0 200px;
-                margin: 10px;
-                border: 1px solid #ccc;
-                box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
-                display: flex;
-                flex-direction: column;
-                max-width: 100%;
-                padding: 5px;
+                max-width: 350px;
+                margin: 5px;
                 
             }
             `}</style>
-        </div>
+        </>
     );
 };
 
