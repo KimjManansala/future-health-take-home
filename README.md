@@ -36,6 +36,7 @@ What I Used
 * Prisma
 * Vercel
 * Postgres
+* Bootstrap
 
 Challenges and Solutions
 ---
