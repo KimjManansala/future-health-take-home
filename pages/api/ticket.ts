@@ -29,13 +29,6 @@ const handlePost = async (req, res) => {
             description: description,
             statusId: 'clixtltqo0000gne7bw46f6ec', // Hard coded for now
             createdById: mockClientUserId,
-            // UserTicket: {
-            //     create: [
-            //         {
-            //             userId: mockClientUserId // Hard coded for now
-            //         }
-            //     ]
-            // }
         }
     })
     res.status(201).json({ result })
@@ -63,7 +56,10 @@ const handleGet = async (req, res) => {
                 }
             }
 
-        }
+        },
+        orderBy: {
+            createdAt: 'asc',
+        },
     })
     res.status(200).json({
         props: { result },

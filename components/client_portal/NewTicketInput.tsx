@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Loading from "../common/Loading";
 
 const NewTicketInput = ({newTicketCallback}) => {
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const handleSubmitForm = async (event) => {
+        setIsSubmitting(true)
         event.preventDefault()
         const {
             name,
@@ -29,31 +32,48 @@ const NewTicketInput = ({newTicketCallback}) => {
             console.error(error)
             alert("Something went wrong. Please try again later")
         }
+        setIsSubmitting(false)
     }
 
 
     return (
-        <div className="section" style={{maxWidth: '750px'}}>
-            <h1>Create a new ticket</h1>
-            <form style={{
-                display: "grid",
-                columnGap: 10,
-                rowGap: 10,
-            }} onSubmit={handleSubmitForm}>
-                <div className="form_input">
-                    <label>Name</label>
-                    <input name="name" required />
-                </div>
-                <div className="form_input">
-                    <label>Email</label>
-                    <input name="email" type="email" required/>
-                </div>
-                <div className="form_input">
-                    <label>Description</label>
-                    <textarea name="description" required/>
-                </div>
-                <button style={{width: 'fit-content'}}>Submit!</button>
-            </form>
+        <div className="card">
+            <div className="card-header">
+                Create a new ticket
+            </div>
+            <div className="card-body">
+                <Loading isLoading={isSubmitting}>
+                    <form onSubmit={handleSubmitForm}>
+                            <div className="form-floating mb-3">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="floatingInputName"
+                                    name="name"
+                                />
+                                <label htmlFor="floatingInputName">Name</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="floatingInputName"
+                                    name="email"
+                                />
+                                <label htmlFor="floatingInputEmail">Email</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <textarea
+                                    name="description"
+                                    className="form-control"
+                                    id="floatingInputDescription"
+                                />
+                                <label htmlFor="floatingInputDescription">Description</label>
+                            </div>
+                        <button className="btn btn-primary">Submit!</button>
+                    </form>
+                </Loading>
+            </div>
         </div>
     );
 };
