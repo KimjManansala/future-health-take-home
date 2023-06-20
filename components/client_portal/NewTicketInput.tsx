@@ -23,6 +23,7 @@ const NewTicketInput = ({newTicketCallback}) => {
             })
             if (res.status === 201) {
                 newTicketCallback();
+                event.target.reset()
             }
         } catch (error) {
             console.error(error)
@@ -32,7 +33,7 @@ const NewTicketInput = ({newTicketCallback}) => {
 
 
     return (
-        <div className="section">
+        <div className="section" style={{maxWidth: '750px'}}>
             <h1>Create a new ticket</h1>
             <form style={{
                 display: "grid",
@@ -41,15 +42,15 @@ const NewTicketInput = ({newTicketCallback}) => {
             }} onSubmit={handleSubmitForm}>
                 <div className="form_input">
                     <label>Name</label>
-                    <input name="name" />
+                    <input name="name" required />
                 </div>
                 <div className="form_input">
                     <label>Email</label>
-                    <input name="email"/>
+                    <input name="email" type="email" required/>
                 </div>
                 <div className="form_input">
                     <label>Description</label>
-                    <textarea name="description"/>
+                    <textarea name="description" required/>
                 </div>
                 <button style={{width: 'fit-content'}}>Submit!</button>
             </form>

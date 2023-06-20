@@ -10,10 +10,17 @@ const ExistingTicket: React.FC<IExistingTicket> = ({tickets}) => {
         <div className="section">
             <h1>My Tickets</h1>
             <main>
-                {tickets.map((ticket) => <>
-                    <Ticket ticket={ticket}/>
+                {tickets.map((ticket, index) => <>
+                    <Ticket ticket={ticket} ticketNumber={index + 1} />
                 </>)}
             </main>
+            <style jsx>{`
+                main {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: stretch;
+                }
+            `}</style>
         </div>
     );
 };

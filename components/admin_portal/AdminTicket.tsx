@@ -7,7 +7,7 @@ const AdminTicket = ({ticket, selectedTicketId, updateCallback}) => {
         <div>
 
                 <div className="card">
-                    <p className="title">{ticket.name}</p>
+                    <p className="title">Ticket from: {ticket.name}</p>
                     {selectedTicketId !== ticket.id ? (
                         <div className="info-button">
                             <Link href={`/admin_portal/${ticket.id}`}>Click for more info</Link>
