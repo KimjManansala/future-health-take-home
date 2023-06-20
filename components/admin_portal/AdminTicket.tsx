@@ -4,18 +4,18 @@ import TicketInfoAndAction from "./TicketInfoAndAction";
 
 const AdminTicket = ({ticket, selectedTicketId, updateCallback}) => {
     return (
-        <div>
-
-                <div className="card">
-                    <p className="title">Ticket from: {ticket.name}</p>
+        <>
+            <div className="card ">
+                <div className="card-body">
+                    <h6 className="card-title">Ticket from: {ticket.name}</h6>
                     {selectedTicketId !== ticket.id ? (
-                        <div className="info-button">
-                            <Link href={`/admin_portal/${ticket.id}`}>Click for more info</Link>
-                        </div>
-                        ):(
+                        <Link href={`/admin_portal/${ticket.id}`}>Click to manage</Link>
+                    ):(
                         <TicketInfoAndAction ticket={ticket} updateCallback={updateCallback} />
                     )}
+                    {/*<button className="btn btn-primary" onClick={() => {setIsExpand(!isExpand)}}>{!isExpand? 'Expand' : 'Minimize'}</button>*/}
                 </div>
+            </div>
             <style jsx>
                 {`
                     .card {
@@ -41,7 +41,7 @@ const AdminTicket = ({ticket, selectedTicketId, updateCallback}) => {
                   
                 `}
             </style>
-        </div>
+        </>
     );
 };
 

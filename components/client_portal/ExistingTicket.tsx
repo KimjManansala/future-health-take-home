@@ -12,7 +12,7 @@ const ExistingTicket: React.FC<IExistingTicket> = ({tickets}) => {
             <div className="card-header">
                 My Tickets
             </div>
-            <main className="d-flex flex-wrap justify-content-left align-items-start justify-content-center">
+            <main className="d-flex flex-wrap justify-content-left align-items-start">
                 <Loading isLoading={!tickets.length}>
                     {tickets.map((ticket, index) => <Ticket key={ticket.id} ticket={ticket} ticketNumber={index + 1} />)}
                 </Loading>

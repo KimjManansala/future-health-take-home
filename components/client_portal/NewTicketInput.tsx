@@ -50,6 +50,7 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     className="form-control"
                                     id="floatingInputName"
                                     name="name"
+                                    required
                                 />
                                 <label htmlFor="floatingInputName">Name</label>
                             </div>
@@ -59,6 +60,7 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     className="form-control"
                                     id="floatingInputName"
                                     name="email"
+                                    required
                                 />
                                 <label htmlFor="floatingInputEmail">Email</label>
                             </div>
@@ -67,6 +69,7 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     name="description"
                                     className="form-control"
                                     id="floatingInputDescription"
+                                    required
                                 />
                                 <label htmlFor="floatingInputDescription">Description</label>
                             </div>

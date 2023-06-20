@@ -1,6 +1,7 @@
 import React from 'react';
 import Ticket from "../client_portal/Ticket";
 import AdminTicket from "./AdminTicket";
+import Loading from "../common/Loading";
 
 interface IAllTickets {
     tickets: any[],
@@ -10,21 +11,18 @@ interface IAllTickets {
 
 const AllTickets: React.FC<IAllTickets> = ({ tickets, selectedTicketId, updateCallback }) => {
     return (
-        <div className="section">
-            <h1>All Tickets</h1>
-            <main>
-                <div className="card-parent">
-                    {tickets.map((ticket) => <>
-                        <AdminTicket ticket={ticket} selectedTicketId={selectedTicketId} updateCallback={updateCallback} />
-                    </>)}
-                </div>
+        <div className="card mb-4">
+            <div className="card-header">
+                All Tickets
+            </div>
+            <main className="d-flex flex-wrap justify-content-left align-items-start">
+                <Loading isLoading={!tickets.length}>
+                    {tickets.map((ticket) => <AdminTicket key={ticket.id} ticket={ticket} selectedTicketId={selectedTicketId} updateCallback={updateCallback} />
+                    )}
+                </Loading>
             </main>
             <style jsx>{`
-                .card-parent {
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: stretch;
-                }
+              
             `}</style>
         </div>
     );

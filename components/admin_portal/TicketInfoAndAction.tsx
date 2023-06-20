@@ -3,12 +3,12 @@ import UpdateTicket from "./UpdateTicket";
 
 const TicketInfoAndAction = ({ticket, updateCallback}) => {
     return (
-        <div className="text-left">
-            <ul>
-                <p className="detail"><span className="list-key">Email:</span> {ticket.email}</p>
-                <p className="detail"><span className="list-key">Name:</span> {ticket.name}</p>
-                <p className="detail"><span className="list-key">Description:</span> {ticket.description}</p>
-                <p className="detail"><span className="list-key">Status:</span> {ticket.status.status}</p>
+        <>
+            <ul className="list-group list-group-flush">
+                 <li className="list-group-item"><span className="fw-bold">Email:</span> {ticket.email}</li>
+                 <li className="list-group-item"><span className="fw-bold">Name:</span> {ticket.name}</li>
+                 <li className="list-group-item"><span className="fw-bold">Description:</span> {ticket.description}</li>
+                 <li className="list-group-item"><span className="fw-bold">Status:</span> {ticket.status.status}</li>
             </ul>
             <UpdateTicket ticket={ticket} updateCallback={updateCallback} />
             <style jsx>{`
@@ -19,7 +19,7 @@ const TicketInfoAndAction = ({ticket, updateCallback}) => {
                     padding: 5px;
                 }
             `}</style>
-        </div>
+        </>
     );
 };
 

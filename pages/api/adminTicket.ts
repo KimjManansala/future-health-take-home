@@ -17,16 +17,23 @@ const handlePut = async (req, res) => {
         response: string
     } = req.body
 
-    handleEmailAction(response, id, status);
-    const updateTicket = await prisma.ticket.update({
-        where: {
-            id: id,
-        },
-        data: {
-            statusId: status,
-        },
-    })
-    res.status(200).json({ updateTicket })
+    res.status(400)
+
+    if (id && status && response) {
+
+        handleEmailAction(response, id, status);
+        const updateTicket = await prisma.ticket.update({
+            where: {
+                id: id,
+            },
+            data: {
+                statusId: status,
+            },
+        })
+        res.status(200).json({ updateTicket })
+    } else {
+        res.status(400).json()
+    }
 }
 
 
