@@ -7,11 +7,29 @@ const Blog: React.FC<{}> = () => {
   return (
     <Layout>
       <div className="page">
-          <div>
-              <Link href={'/client_portal'}>Go to client portal</Link>
-          </div>
-          <div>
-              <Link href={'/admin_portal'}>Go to admin portal</Link>
+          <div className="container text-center">
+              <h1>Welcome!</h1>
+              <h3>Here is a simulation of a mock help desk</h3>
+              <div className="row">
+                  <div className="col" role="button">
+                      <Link href={'/client_portal'}>
+                      <div className="card">
+                          <div className="card-body">
+                              Go to client portal
+                          </div>
+                      </div>
+                      </Link>
+                  </div>
+                  <div className="col" role="button">
+                      <Link href={'/admin_portal'}>
+                      <div className="card">
+                          <div className="card-body">
+                              Go to admin portal
+                          </div>
+                      </div>
+                    </Link>
+                  </div>
+              </div>
           </div>
       </div>
       <style jsx>{`

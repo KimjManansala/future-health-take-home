@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from "react-select";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const UpdateTicket = ({ticket, updateCallback}) => {
 
@@ -19,51 +20,59 @@ const UpdateTicket = ({ticket, updateCallback}) => {
         } = event.target
         if (!response.value || !newStatus.value) {
             alert('Please select status and fill response to ticket')
-        }
-        const res = await fetch('/api/adminTicket', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: ticket.id,
-                status: newStatus.value,
-                response: response.value
-            }),
-        })
-        if (res.status === 200) {
-            alert('Successfully updated ticket!')
-            updateCallback()
+        } else {
+            try {
+                const res = await fetch('/api/adminTicket', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: ticket.id,
+                        status: newStatus.value,
+                        response: response.value
+                    }),
+                })
+                if (res.status === 200) {
+                    alert('Successfully updated ticket!')
+                    updateCallback()
+                }
+            } catch (error) {
+                console.error(error)
+                alert('Unable to update Ticket')
+            }
         }
     }
 
     return (
-
-        <div>
-            <form className="form" onSubmit={handleFormSubmit}>
-                <div className="form_input">
+        <div className="border-top p-2">
+            <form onSubmit={handleFormSubmit}>
+                <div className="form-floating mb-3">
+                    <textarea
+                        className="form-control"
+                        id="floatingInputResponse"
+                        name="response"
+                        required
+                    />
+                    <label htmlFor="floatingInputResponse">Response</label>
+                </div>
+                <div className="mb-3">
                     <label>Set Status</label>
                     <Select
                         name="newStatus"
                         options={statusOptions}
                         defaultValue={statusOptions.find(res => res.value === ticket.statusId)}
+                        id="floatingInputStatus"
                     />
                 </div>
-                <div className="form_input">
-                    Response to Ticket
-                    <textarea name="response" required />
+                <div className="col-auto">
+                    <button className="btn btn-primary mx-1 btn-sm">Submit!</button>
+                    <Link href="/admin_portal">
+                        <button className="btn btn-secondary btn-sm" type="reset">Cancel</button>
+                    </Link>
                 </div>
-                <button>Submit!</button>
             </form>
             <style jsx>{`
-            form {
-              box-sizing: border-box;
-              padding: 2rem;
-              display: grid;
-            }
-            .form_input {
-                margin-bottom: 10px;
-            }
         `}</style>
         </div>
     );
