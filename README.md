@@ -42,7 +42,7 @@ Challenges and Solutions
 * Challenge #1: Learning a new framework:
   * This project was the first use of NextJS, Prisma, and Vercel. Took some research to understand and utilize the framework and tools.
 * Challenge #2: Limiting scope
-  There are many features you want to add in given an open-ended request. In order to create an MVP I had to prioritize features to make sure something may be shipped within the time frame
+  * There are many features you want to add in given an open-ended request. In order to create an MVP I had to prioritize features to make sure something may be shipped within the time frame
 
   
 Wish to include
