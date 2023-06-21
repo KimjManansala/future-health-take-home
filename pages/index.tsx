@@ -1,44 +1,42 @@
-import React from "react"
+import ExistingTicket from "../components/client_portal/ExistingTicket";
+import React, {useEffect, useState} from "react";
+import Layout from "../components/Layout";
+import NewTicketInput from "../components/client_portal/NewTicketInput";
+import {mockClientUserId} from "../common";
 
-import Layout from "../components/Layout"
-import Link from "next/link";
+const ClientPortal = () => {
+    const [tickets, setTickets] = useState<any[]>([])
 
-const Blog: React.FC<{}> = () => {
-  return (
-    <Layout>
-      <div className="page">
-          <div className="container text-center">
-              <h1>Welcome!</h1>
-              <h3>Here is a simulation of a mock help desk</h3>
-              <div className="row">
-                  <div className="col" role="button">
-                      <Link href={'/client_portal'}>
-                      <div className="card" id='client-portal-link'>
-                          <div className="card-body">
-                              Go to client portal
-                          </div>
-                      </div>
-                      </Link>
-                  </div>
-                  <div className="col" role="button">
-                      <Link href={'/admin_portal'}>
-                      <div className="card" id='admin-portal-link'>
-                          <div className="card-body">
-                              Go to admin portal
-                          </div>
-                      </div>
-                    </Link>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <style jsx>{`
-           .page > div {
-            padding: 5px;
-           }
-      `}</style>
-    </Layout>
-  )
-}
+    const handleGetTickets = async () => {
+        const res = await fetch(`/api/ticket?userId=${mockClientUserId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await res.json()
+        setTickets(data.props.result)
+    }
+    const newTicketCallback = (newTicket) => {
+        setTickets(
+            [
+                ...tickets,
+                newTicket
+            ]
+        )
+    }
 
-export default Blog
+    useEffect(() => {
+        handleGetTickets()
+    }, [])
+    return (
+        <Layout>
+            <div className="page">
+                <ExistingTicket tickets={tickets}/>
+                <NewTicketInput newTicketCallback={newTicketCallback}/>
+            </div>
+        </Layout>
+    );
+};
+
+export default ClientPortal;
