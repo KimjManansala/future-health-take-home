@@ -33,9 +33,10 @@ const UpdateTicket = ({ticket, updateCallback}) => {
                         response: response.value
                     }),
                 })
-                if (res.status === 200) {
+                if (res.status === 201) {
                     alert('Successfully updated ticket!')
-                    updateCallback()
+                    const data = await res.json();
+                    updateCallback(data.updateTicket)
                 }
             } catch (error) {
                 console.error(error)
@@ -52,9 +53,10 @@ const UpdateTicket = ({ticket, updateCallback}) => {
                         className="form-control"
                         id="floatingInputResponse"
                         name="response"
+                        maxLength={50}
                         required
                     />
-                    <label htmlFor="floatingInputResponse">Response</label>
+                    <label htmlFor="floatingInputResponse">Response (max-length 50)</label>
                 </div>
                 <div className="mb-3">
                     <label>Set Status</label>

@@ -1,4 +1,5 @@
 import prisma from "../../lib/prisma";
+import {ticketBodyInclude} from "../../common";
 
 export default async function handler(req, res) {
     if (req.method === 'PUT') {
@@ -29,8 +30,9 @@ const handlePut = async (req, res) => {
             data: {
                 statusId: status,
             },
+            include: ticketBodyInclude,
         })
-        res.status(200).json({ updateTicket })
+        res.status(201).json({ updateTicket })
     } else {
         res.status(400).json()
     }

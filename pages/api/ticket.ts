@@ -1,5 +1,5 @@
 import prisma from "../../lib/prisma";
-import {mockClientUserId} from "../../common";
+import {mockClientUserId, ticketBodyInclude} from "../../common";
 
 
 
@@ -29,7 +29,8 @@ const handlePost = async (req, res) => {
             description: description,
             statusId: 'clixtltqo0000gne7bw46f6ec', // Hard coded for now
             createdById: mockClientUserId,
-        }
+        },
+        include: ticketBodyInclude,
     })
     res.status(201).json({ result })
 }
@@ -44,19 +45,7 @@ const handleGet = async (req, res) => {
             } : {})
         }
             ,
-        include: {
-            status: {
-                select: { status: true}
-            },
-            createdBy: {
-                select: {
-                    firstname: true,
-                    lastname: true,
-                    email: true
-                }
-            }
-
-        },
+        include: ticketBodyInclude,
         orderBy: {
             createdAt: 'asc',
         },
