@@ -12,7 +12,7 @@ const Blog: React.FC<{}> = () => {
                     <h3>Here is a simulation of a mock help desk</h3>
                     <div className="row">
                         <div className="col" role="button">
-                            <Link href={'/client_portal'}>
+                            <Link href={'/'}>
                                 <div className="card" id='client-portal-link'>
                                     <div className="card-body">
                                         Go to client portal
