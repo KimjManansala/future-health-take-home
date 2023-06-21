@@ -25,7 +25,8 @@ const NewTicketInput = ({newTicketCallback}) => {
                 }),
             })
             if (res.status === 201) {
-                newTicketCallback();
+                const data = await res.json();
+                newTicketCallback(data.result);
                 event.target.reset()
             }
         } catch (error) {
@@ -51,8 +52,9 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     id="floatingInputName"
                                     name="name"
                                     required
+                                    maxLength={15}
                                 />
-                                <label htmlFor="floatingInputName">Name</label>
+                                <label htmlFor="floatingInputName">Name (max-length 15)</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input
@@ -69,9 +71,10 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     name="description"
                                     className="form-control"
                                     id="floatingInputDescription"
+                                    maxLength={50}
                                     required
                                 />
-                                <label htmlFor="floatingInputDescription">Description</label>
+                                <label htmlFor="floatingInputDescription">Description (max-length 50)</label>
                             </div>
                         <button className="btn btn-primary">Submit!</button>
                     </form>

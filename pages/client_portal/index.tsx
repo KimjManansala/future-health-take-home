@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import Layout from "../../components/Layout";
 import NewTicketInput from "../../components/client_portal/NewTicketInput";
 import {mockClientUserId} from "../../common";
+import ticket from "../../components/client_portal/Ticket";
 
 const ClientPortal = () => {
     const [tickets, setTickets] = useState<any[]>([])
@@ -17,8 +18,13 @@ const ClientPortal = () => {
         const data = await res.json()
         setTickets(data.props.result)
     }
-    const newTicketCallback = () => {
-        handleGetTickets();
+    const newTicketCallback = (newTicket) => {
+        setTickets(
+            [
+                ...tickets,
+                newTicket
+            ]
+        )
     }
 
     useEffect(() => {

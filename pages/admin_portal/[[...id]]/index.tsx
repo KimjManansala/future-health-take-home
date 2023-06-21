@@ -3,6 +3,7 @@ import Layout from "../../../components/Layout";
 import {mockClientUserId} from "../../../common";
 import AllTickets from "../../../components/admin_portal/AllTickets";
 import {useRouter} from "next/router";
+import ticket from "../../../components/client_portal/Ticket";
 
 const AdminPortal = () => {
     const router = useRouter()
@@ -24,8 +25,14 @@ const AdminPortal = () => {
         setTickets(data.props.result)
     }
 
-    const refetchTickets = () => {
-        handleGetTickets()
+    const updateTicket = (updatedTicket) => {
+        const index = tickets.findIndex(item => item.id === updatedTicket.id)
+
+        setTickets([
+            ...tickets.slice(0, index),
+            updatedTicket,
+            ...tickets.slice(index + 1)
+        ])
     }
 
     useEffect(() => {
@@ -34,7 +41,7 @@ const AdminPortal = () => {
 
     return (
         <Layout>
-            <AllTickets tickets={tickets} selectedTicketId={selectedTicketID} updateCallback={refetchTickets}/>
+            <AllTickets tickets={tickets} selectedTicketId={selectedTicketID} updateCallback={updateTicket}/>
         </Layout>
     );
 };
