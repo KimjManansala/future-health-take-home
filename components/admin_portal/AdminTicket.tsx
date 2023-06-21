@@ -5,7 +5,7 @@ import TicketInfoAndAction from "./TicketInfoAndAction";
 const AdminTicket = ({ticket, selectedTicketId, updateCallback}) => {
     return (
         <>
-            <div className="card ">
+            <div className="card flex-fill">
                 <div className="card-body">
                     <h6 className="card-title">Ticket from: {ticket.name}</h6>
                     {selectedTicketId !== ticket.id ? (
@@ -19,13 +19,15 @@ const AdminTicket = ({ticket, selectedTicketId, updateCallback}) => {
             <style jsx>
                 {`
                     .card {
-                        flex: 0 0 200px;
-                        margin: 10px;
-                        border: 1px solid #ccc;
-                        box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
-                        display: flex;
-                        flex-direction: column;
-                        max-width: 100%;
+                        margin: 2.5px;
+                        max-width: 250px;
+                        // flex: 0 0 200px;
+                        // margin: 10px;
+                        // border: 1px solid #ccc;
+                        // box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+                        // display: flex;
+                        // flex-direction: column;
+                        // max-width: 100%;
                         
                     }
                     .title {

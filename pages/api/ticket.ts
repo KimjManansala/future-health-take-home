@@ -1,5 +1,5 @@
 import prisma from "../../lib/prisma";
-import {mockClientUserId} from "../../common";
+import {mockClientUserId, ticketBodyInclude} from "../../common";
 
 
 
@@ -44,19 +44,7 @@ const handleGet = async (req, res) => {
             } : {})
         }
             ,
-        include: {
-            status: {
-                select: { status: true}
-            },
-            createdBy: {
-                select: {
-                    firstname: true,
-                    lastname: true,
-                    email: true
-                }
-            }
-
-        },
+        include: ticketBodyInclude,
         orderBy: {
             createdAt: 'asc',
         },

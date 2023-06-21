@@ -6,7 +6,7 @@ import Loading from "../common/Loading";
 interface IAllTickets {
     tickets: any[],
     selectedTicketId?: string,
-    updateCallback: () => void;
+    updateCallback: (ticket: any) => void;
 }
 
 const AllTickets: React.FC<IAllTickets> = ({ tickets, selectedTicketId, updateCallback }) => {

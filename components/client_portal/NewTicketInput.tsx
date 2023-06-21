@@ -51,6 +51,7 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     id="floatingInputName"
                                     name="name"
                                     required
+                                    maxLength={15}
                                 />
                                 <label htmlFor="floatingInputName">Name</label>
                             </div>
@@ -69,9 +70,10 @@ const NewTicketInput = ({newTicketCallback}) => {
                                     name="description"
                                     className="form-control"
                                     id="floatingInputDescription"
+                                    maxLength={50}
                                     required
                                 />
-                                <label htmlFor="floatingInputDescription">Description</label>
+                                <label htmlFor="floatingInputDescription">Description (max-length 50)</label>
                             </div>
                         <button className="btn btn-primary">Submit!</button>
                     </form>
