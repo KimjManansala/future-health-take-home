@@ -29,7 +29,8 @@ const handlePost = async (req, res) => {
             description: description,
             statusId: 'clixtltqo0000gne7bw46f6ec', // Hard coded for now
             createdById: mockClientUserId,
-        }
+        },
+        include: ticketBodyInclude,
     })
     res.status(201).json({ result })
 }

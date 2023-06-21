@@ -36,7 +36,6 @@ const UpdateTicket = ({ticket, updateCallback}) => {
                 if (res.status === 201) {
                     alert('Successfully updated ticket!')
                     const data = await res.json();
-                    console.log('data', data);
                     updateCallback(data.updateTicket)
                 }
             } catch (error) {
